@@ -34,9 +34,15 @@ class Playlist
      */
     private $followers;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="playlists")
+     */
+    private $usersFollowers;
+
     public function __construct()
     {
         $this->followers = new ArrayCollection();
+        $this->usersFollowers = new ArrayCollection();
     }
 
     public function getId(): ?int
