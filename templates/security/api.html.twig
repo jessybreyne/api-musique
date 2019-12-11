@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+{% block content %}
+{% if app.user.apikey %}
+    Votre API KEY : {% app.user.apikey %}
+{% else %}
+    <button onclick="getAPI()">GET API</button>
+    <div id="result"></div>
+{% endif %}
+
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript">
+        function getAPI(){
+            let url = "getAPI"
+            fetch("/getAPI").then(function(response){
+                let div = document.createElement("div",{class : "alert alert-success"})
+                div.innerText = "Votre clé d'API est : "+response;
+                document.getElementByID("result").append(div)
+            }
+            )
+        }
+        
+    </script>
+{% endblock %}
+

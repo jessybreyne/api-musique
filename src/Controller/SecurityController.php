@@ -27,6 +27,20 @@ class SecurityController extends AbstractController
     }
 
     /**
+     * @Route("/api", name="api_generator")
+     */
+
+    public function apiGenerator()
+    {
+        $user = $this->getUser();
+        if ($user!=null)
+            return $this->render('security/api.html.twig');
+        else
+            return $this->redirectToRoute('app_login');
+    }
+
+
+    /**
      * @Route("/logout", name="app_logout")
      */
     public function logout()
