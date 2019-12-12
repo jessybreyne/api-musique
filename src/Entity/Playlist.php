@@ -39,10 +39,16 @@ class Playlist
      */
     private $usersFollowers;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Musique", inversedBy="playlists")
+     */
+    private $musiques;
+
     public function __construct()
     {
         $this->followers = new ArrayCollection();
         $this->usersFollowers = new ArrayCollection();
+        $this->musiques = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -95,6 +101,32 @@ class Playlist
     {
         if ($this->followers->contains($follower)) {
             $this->followers->removeElement($follower);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Musique[]
+     */
+    public function getMusiques(): Collection
+    {
+        return $this->musiques;
+    }
+
+    public function addMusique(Musique $musique): self
+    {
+        if (!$this->musiques->contains($musique)) {
+            $this->musiques[] = $musique;
+        }
+
+        return $this;
+    }
+
+    public function removeMusique(Musique $musique): self
+    {
+        if ($this->musiques->contains($musique)) {
+            $this->musiques->removeElement($musique);
         }
 
         return $this;

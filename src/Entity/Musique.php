@@ -43,10 +43,16 @@ class Musique
      */
     private $link;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Playlist", mappedBy="musiques")
+     */
+    private $playlists;
+
     public function __construct()
     {
         $this->artistes = new ArrayCollection();
         $this->categories = new ArrayCollection();
+        $this->playlists = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -142,6 +148,34 @@ class Musique
     public function setLink(?string $link): self
     {
         $this->link = $link;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Playlist[]
+     */
+    public function getPlaylists(): Collection
+    {
+        return $this->playlists;
+    }
+
+    public function addPlaylist(Playlist $playlist): self
+    {
+        if (!$this->playlists->contains($playlist)) {
+            $this->playlists[] = $playlist;
+            $playlist->addMusique($this);
+        }
+
+        return $this;
+    }
+
+    public function removePlaylist(Playlist $playlist): self
+    {
+        if ($this->playlists->contains($playlist)) {
+            $this->playlists->removeElement($playlist);
+            $playlist->removeMusique($this);
+        }
 
         return $this;
     }
