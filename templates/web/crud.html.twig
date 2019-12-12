@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+{% block title %}
+MusiqueDB-SGB
+{% endblock %}
+
+
+
+{% block content %}
+
+    {% if app.user %}
+        <div>
+            CRUD :
+            <ul>
+                <li><a href="{{ path('musique_index') }}">Musique</a></li>
+                <li><a href="{{ path('artiste_index') }}">Artise</a></li>
+                <li><a href="{{ path('categorie_index') }}">Catégorie</a></li>
+                <li><a href="{{ path('album_index') }}">Album</a></li>
+            </ul>
+        </div>
+    {% endif %}
+    
+{% endblock %}

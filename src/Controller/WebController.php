@@ -14,4 +14,12 @@ class WebController extends AbstractController
     {
         return $this->render('web/index.html.twig');
     }
+
+    /**
+     * @Route("/crud", name="crud")
+     */
+    public function page_crud()
+    {
+        return $this->render('web/crud.html.twig');
+    }
 }
