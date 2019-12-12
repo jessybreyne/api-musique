@@ -156,13 +156,6 @@ class User implements UserInterface
         return $this->APIKey;
     }
 
-    public function generateAPIKey(): ?string{
-
-        $string = $this->username.$this->id.rand(); 
-        $result = hash("sha256", $string); 
-        return $result; 
-    }
-
     public function setAPIKey(?string $APIKey): self
     {
         $this->APIKey = $APIKey;

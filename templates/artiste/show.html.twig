@@ -24,7 +24,10 @@
 
     <a href="{{ path('artiste_index') }}">back to list</a>
 
+    {% if app.user %}
     <a href="{{ path('artiste_edit', {'id': artiste.id}) }}">edit</a>
 
     {{ include('artiste/_delete_form.html.twig') }}
+    {% endif %}
+    
 {% endblock %}

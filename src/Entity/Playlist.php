@@ -61,6 +61,11 @@ class Playlist
         return $this->nom;
     }
 
+    public function __toString(): ?string
+    {
+        return $this->nom;
+    }
+
     public function setNom(string $nom): self
     {
         $this->nom = $nom;

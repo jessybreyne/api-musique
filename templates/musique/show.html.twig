@@ -21,14 +21,16 @@
             </tr>
             <tr>
                 <th>Link</th>
-                <td>{{ musique.link }}</td>
+                <td></td>
             </tr>
         </tbody>
     </table>
+    <div style='display:none;'><iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url={{ musique.link }}&auto_play=true&hide_related=false&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></div>
 
     <a href="{{ path('musique_index') }}">back to list</a>
-
+    {% if app.user %}
     <a href="{{ path('musique_edit', {'id': musique.id}) }}">edit</a>
-
     {{ include('musique/_delete_form.html.twig') }}
+    {% endif %}
+
 {% endblock %}
