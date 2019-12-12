@@ -20,6 +20,7 @@
                     let div = document.createElement("div",{class : "alert alert-success"})
                     div.innerText = "Votre clé d'API est : "+ data.APIKey;
                     document.getElementById("result").append(div)
+                    document.querySelector('button').remove()
                 })
         }
         
