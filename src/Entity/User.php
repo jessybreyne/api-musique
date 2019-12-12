@@ -157,8 +157,9 @@ class User implements UserInterface
     }
 
     public function generateAPIKey(): ?string{
-        $str = rand(); 
-        $result = hash("sha256", $str); 
+
+        $string = $this->username.$this->id.rand(); 
+        $result = hash("sha256", $string); 
         return $result; 
     }
 
