@@ -13,7 +13,7 @@
                     <ul>
                         <a href="{{ path('index') }}"><li>Accueil</li></a>
                         {% if app.user %}
-                            <a href="{{ path('index') }}"><li>Accès au CRUD</li></a>
+                            <a href="{{ path('crud') }}"><li>Accès au CRUD</li></a>
                             <a href="{{ path('api_generator') }}"><li>API</li></a>
                             <a href="{{ path('app_logout') }}"><li>Logout</li></a>
                         {% else %}
