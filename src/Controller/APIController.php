@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class APIController extends AbstractController
 {
     /**
-     * @Route("/request/", name="")
+     * @Route("/request", name="")
      */
     public function index()
     {
@@ -17,5 +17,4 @@ class APIController extends AbstractController
             'path' => 'src/Controller/APIController.php',
         ]);
     }
-    
 }

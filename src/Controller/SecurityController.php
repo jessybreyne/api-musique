@@ -39,6 +39,32 @@ class SecurityController extends AbstractController
             return $this->redirectToRoute('app_login');
     }
 
+    /**
+     * @Route("/getAPI", name="getAPIKey")
+     */
+    public function getAPI()
+    {
+        $user = $this->getUser();
+        if ($user){
+            $entityManager = $this->getDoctrine()->getManager();
+            $apiKey = $user->generateAPIKey();
+            $user->setAPIKey($apiKey);
+            $entityManager->flush();
+            return $this->json([
+                'codeStatus' => 00001,
+                'messageStatus' => "Clé d'API généré",
+                'APIKey' => $apiKey,
+            ]);
+        }
+        else{
+            return $this->json([
+                'codeStatus' => 00101,
+                'messageStatus' => "Clé d'API non généré",
+                'APIKey' => '',
+            ]);
+        }
+    }
+
 
     /**
      * @Route("/logout", name="app_logout")

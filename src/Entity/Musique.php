@@ -38,6 +38,11 @@ class Musique
      */
     private $categories;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $link;
+
     public function __construct()
     {
         $this->artistes = new ArrayCollection();
@@ -125,6 +130,18 @@ class Musique
             $this->categories->removeElement($category);
             $category->removeMusique($this);
         }
+
+        return $this;
+    }
+
+    public function getLink(): ?string
+    {
+        return $this->link;
+    }
+
+    public function setLink(?string $link): self
+    {
+        $this->link = $link;
 
         return $this;
     }

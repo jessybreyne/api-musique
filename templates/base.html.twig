@@ -6,7 +6,28 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+            {% block  navbar %}
+
+                <nav>
+                    <ul>
+                        <a href="{{ path('index') }}"><li>Accueil</li></a>
+                        {% if app.user %}
+                            <a href="{{ path('index') }}"><li>Accès au CRUD</li></a>
+                            <a href="{{ path('api_generator') }}"><li>API</li></a>
+                            <a href="{{ path('app_logout') }}"><li>Logout</li></a>
+                        {% else %}
+                            <a href="{{ path('app_login') }}"><li>Login</li></a>
+                            <a href="{{ path('app_register') }}"><li>Register</li></a>
+                        {% endif %}
+                    </ul>
+                </nav>
+            
+            {% endblock %}
+            {% block content %}
+                
+            {% endblock %}
+        {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>
