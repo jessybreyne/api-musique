@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/musique")
@@ -17,6 +18,7 @@ class MusiqueController extends AbstractController
 {
     /**
      * @Route("/", name="musique_index", methods={"GET"})
+     * @IsGranted("ROLE_USER")
      */
     public function index(MusiqueRepository $musiqueRepository): Response
     {

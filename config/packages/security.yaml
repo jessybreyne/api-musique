@@ -36,7 +36,15 @@ security:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/profile, roles: ROLE_USER }
         - { path: ^/crud, roles: ROLE_USER }
-        - { path: ^/album, roles: ROLE_USER }
-        - { path: ^/musique, roles: ROLE_USER }
-        - { path: ^/artiste, roles: ROLE_USER }
-        - { path: ^/categorie, roles: ROLE_USER }
+        - { path: ^/album/new, roles: ROLE_USER }
+        - { path: ^/musique/new, roles: ROLE_USER }
+        - { path: ^/artiste/new, roles: ROLE_USER }
+        - { path: ^/categorie/new, roles: ROLE_USER }
+        - { path: path('musique_edit'), roles: ROLE_USER }
+        - { path: path('artiste_edit'), roles: ROLE_USER }
+        - { path: path('album_edit'), roles: ROLE_USER }
+        - { path: path('categorie_edit'), roles: ROLE_USER }
+        - { path: path('artiste_delete'), roles: ROLE_USER }
+        - { path: path('album_delete'), roles: ROLE_USER }
+        - { path: path('musique_delete'), roles: ROLE_USER }
+        - { path: path('categorie_delete'), roles: ROLE_USER }
