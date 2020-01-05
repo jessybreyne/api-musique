@@ -28,7 +28,7 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/api", name="api_generator")
+     * @Route("/userAPI", name="api_generator")
      */
 
     public function apiGenerator()
