@@ -1,4 +1,41 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <div class="row">
+        <div class="form-group col-xs-1 col-lg-10">
+              {{ form_label(form.titre, 'Titre') }}
+              {{ form_widget(form.titre, {'attr': {'class' : 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-xs-1 col-lg-10">
+            {{ form_label(form.date, 'Date de sortie') }}
+            {{ form_widget(form.date, {'attr': {'class' : 'form-control', 'type': 'date'}}) }}
+        </div>
+    </div>
+      <div class="row">
+          <div class="form-group col-xs-1 col-lg-10">
+            {{ form_label(form.link, 'Lien de la musique') }}
+            {{ form_widget(form.link, {'attr': {'class' : 'form-control'}}) }}
+        </div>
+    </div>
+      <div class="row">
+          <div class="form-group col-xs-1 col-lg-10">
+            {{ form_label(form.artistes, 'Artistes') }}
+            {{ form_widget(form.artistes, {'attr': {'class' : 'form-control'}}) }}
+        </div>
+    </div>
+      <div class="row">
+          <div class="form-group col-xs-1 col-lg-10">
+            {{ form_label(form.categories, 'Catégories') }}
+            {{ form_widget(form.categories, {'attr': {'class' : 'form-control'}}) }}
+        </div>
+    </div>
+      <div class="row">
+          <div class="form-group col-xs-1 col-lg-10">
+            {{ form_label(form.playlists, 'Playlists') }}
+            {{ form_widget(form.playlists, {'attr': {'class' : 'form-control'}}) }}
+        </div>
+    </div>
+
+      <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

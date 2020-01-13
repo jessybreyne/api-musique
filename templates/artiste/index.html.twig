@@ -29,8 +29,8 @@
                 <td>{{ artiste.nom }}</td>
                 <td>{{ artiste.photo }}</td>
                 <td>
-                    <a href="{{ path('artiste_show', {'id': artiste.id}) }}">show</a>
-                    <a href="{{ path('artiste_edit', {'id': artiste.id}) }}">edit</a>
+                    <a class="btn btn-info" href="{{ path('artiste_show', {'id': artiste.id}) }}">Afficher</a>
+                    <a class="btn btn-info" href="{{ path('artiste_edit', {'id': artiste.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -41,5 +41,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('artiste_new') }}">Create new</a>
+    <a class="btn btn-primary" href="{{ path('artiste_new') }}">Ajouter</a>
 {% endblock %}
