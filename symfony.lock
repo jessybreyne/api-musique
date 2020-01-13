@@ -120,7 +120,7 @@
         "version": "2.1.1"
     },
     "php": {
-        "version": "7.1"
+        "version": "7.3"
     },
     "phpdocumentor/reflection-common": {
         "version": "2.0.0"
@@ -406,11 +406,17 @@
     "symfony/yaml": {
         "version": "v4.4.1"
     },
+    "twbs/bootstrap": {
+        "version": "v4.4.1"
+    },
     "twig/twig": {
         "version": "v2.12.2"
     },
     "webmozart/assert": {
         "version": "1.6.0"
+    },
+    "willdurand/negotiation": {
+        "version": "v2.3.1"
     },
     "zendframework/zend-code": {
         "version": "3.4.0"
