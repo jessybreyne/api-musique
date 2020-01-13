@@ -53,6 +53,11 @@ class Musique
      */
     private $playlists;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Album", inversedBy="musiques")
+     */
+    private $album;
+
     public function __construct()
     {
         $this->artistes = new ArrayCollection();
@@ -186,6 +191,18 @@ class Musique
             $this->playlists->removeElement($playlist);
             $playlist->removeMusique($this);
         }
+
+        return $this;
+    }
+
+    public function getAlbum(): ?Album
+    {
+        return $this->album;
+    }
+
+    public function setAlbum(?Album $album): self
+    {
+        $this->album = $album;
 
         return $this;
     }

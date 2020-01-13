@@ -33,9 +33,20 @@ class Album
      */
     private $artistes;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Musique", mappedBy="album")
+     */
+    private $musiques;
+
     public function __construct()
     {
         $this->artistes = new ArrayCollection();
+        $this->musiques = new ArrayCollection();
     }
 
     public function __toString(): ?string
@@ -81,6 +92,49 @@ class Album
     {
         if ($this->artistes->contains($artiste)) {
             $this->artistes->removeElement($artiste);
+        }
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Musique[]
+     */
+    public function getMusiques(): Collection
+    {
+        return $this->musiques;
+    }
+
+    public function addMusique(Musique $musique): self
+    {
+        if (!$this->musiques->contains($musique)) {
+            $this->musiques[] = $musique;
+            $musique->setAlbum($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMusique(Musique $musique): self
+    {
+        if ($this->musiques->contains($musique)) {
+            $this->musiques->removeElement($musique);
+            // set the owning side to null (unless already changed)
+            if ($musique->getAlbum() === $this) {
+                $musique->setAlbum(null);
+            }
         }
 
         return $this;
