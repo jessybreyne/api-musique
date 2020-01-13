@@ -8,14 +8,13 @@ MusiqueDB-SGB
 {% block body %}
 
     {% if app.user %}
-        <div>
-            CRUD :
-            <ul>
-                <li><a href="{{ path('musique_index') }}">Musique</a></li>
-                <li><a href="{{ path('artiste_index') }}">Artiste</a></li>
-                <li><a href="{{ path('categorie_index') }}">Catégorie</a></li>
-                <li><a href="{{ path('album_index') }}">Album</a></li>
-            </ul>
+        <div class="row justify-content-center">
+            <div class="btn-group mt-3 col-3" role="group" aria-label="Basic example">
+                <a href="{{ path('musique_index') }}" class="btn btn-secondary">Musique</a>
+                <a href="{{ path('artiste_index') }}" class="btn btn-secondary">Artiste</a>
+                <a href="{{ path('categorie_index') }}" class="btn btn-secondary">Catégorie</a>
+                <a href="{{ path('album_index') }}" class="btn btn-secondary">Album</a>
+            </div>
         </div>
     {% endif %}
     
