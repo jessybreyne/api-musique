@@ -7,7 +7,41 @@ MusiqueDB-SGB
     <main>
         <div class='container'>
             <div class='row'>
-            
+                <h2> Musiques </h2>
+            </div>
+            <div class='row'> 
+                {% for musique in musiques %}
+                    <div class='card col-lg-4 col-sm-12 col-md-6'>
+                        <h3>{{ musique.titre }}</h3>
+                        <legend>{{ musique.date ? musique.date|date('Y-m-d') : '' }}</legend>
+                        <legend>{{ musique.link }}</legend>
+                        <a class="btn btn-info" href="{{ path('musique_show', {'id': musique.id}) }}">Afficher</a>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class='row'>
+                <h2> Artiste </h2>
+            </div>
+            <div class='row'> 
+                {% for artiste in artistes %}
+                    <div class='card col-lg-4 col-sm-12 col-md-6'>
+                        <h3>{{ artiste.nom }}</h3>
+                        <img src='{{ artiste.photo }}' alt='{{ artiste.nom }}'>
+                        <a class="btn btn-info" href="{{ path('artiste_show', {'id': artiste.id}) }}">Afficher</a>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class='row'>
+                <h2> Albums </h2>
+            </div>
+            <div class='row'> 
+                {% for album in albums %}
+                    <div class='card col-lg-4 col-sm-12 col-md-6'>
+                        <h3>{{ album.nom }}</h3>
+                        <img src='{{ album.image }}' alt='{{ album.nom }}'>
+                        <a class="btn btn-info" href="{{ path('album_show', {'id': album.id}) }}">Afficher</a>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </main>
