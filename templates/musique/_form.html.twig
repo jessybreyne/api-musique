@@ -36,6 +36,12 @@
             {{ form_widget(form.playlists, {'attr': {'class' : 'form-control'}}) }}
         </div>
     </div>
+    <div class="row">
+          <div class="form-group col-xs-1 col-lg-10">
+            {{ form_label(form.album, 'Album') }}
+            {{ form_widget(form.album, {'attr': {'class' : 'form-control'}}) }}
+        </div>
+    </div>
 
       <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

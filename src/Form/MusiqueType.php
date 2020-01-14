@@ -18,6 +18,7 @@ class MusiqueType extends AbstractType
             ->add('artistes')
             ->add('categories')
             ->add('playlists')
+            ->add('album')
         ;
     }
 
