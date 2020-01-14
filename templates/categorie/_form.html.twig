@@ -1,4 +1,16 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <div class="row">
+        <div class="form-group col-xs-1 col-lg-10">
+            {{ form_label(form.nom, 'Nom de la catégorie') }}
+            {{ form_widget(form.nom, {'attr': {'class' : 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-xs-1 col-lg-10">
+            {{ form_label(form.musiques, 'Musiques') }}
+            {{ form_widget(form.musiques, {'attr': {'class' : 'form-control'}}) }}
+        </div>
+    </div>
+    <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}
