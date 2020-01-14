@@ -24,6 +24,8 @@ class CategorieController extends AbstractController
     {
         return $this->render('categorie/index.html.twig', [
             'categories' => $categorieRepository->findAll(),
+            'crudcurrent' => 'categorie',
+            'current' => 'crud'
         ]);
     }
 

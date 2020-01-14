@@ -13,6 +13,7 @@ class AlbumType extends AbstractType
     {
         $builder
             ->add('nom')
+            ->add('image')
             ->add('artistes')
         ;
     }

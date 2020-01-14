@@ -18,25 +18,25 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ path('index') }}">Accueil <span class="sr-only">(current)</span></a>
+                <li class="nav-item {{ (current == 'index') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ path('index') }}">Accueil {{ (current == 'index') ? '<span class="sr-only">(current)</span>' : '' }}</a>
                 </li>
                 {% if app.user %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('crud') }}">Accès au CRUD</a>
+                <li class="nav-item {{ (current == 'crud') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ path('crud') }}">Accès au CRUD {{ (current == 'crud') ? '<span class="sr-only">(current)</span>' : '' }}</a>
+                </li>
+                <li class="nav-item {{ (current == 'api') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ path('api_generator') }}">API {{ (current == 'api') ? '<span class="sr-only">(current)</span>' : '' }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('api_generator') }}">API</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
+                    <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
                 </li>
                 {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_login') }}">Login</a>
+                <li class="nav-item {{ (current == 'login') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ path('app_login') }}">Se connecter {{ (current == 'login') ? '<span class="sr-only">(current)</span>' : '' }}</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_register') }}">Register</a>
+                <li class="nav-item {{ (current == 'register') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ path('app_register') }}">S'inscrire {{ (current == 'register') ? '<span class="sr-only">(current)</span>' : '' }}</a>
                 </li>
                 {% endif %}
             </ul>

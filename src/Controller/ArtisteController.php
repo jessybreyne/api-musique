@@ -24,6 +24,8 @@ class ArtisteController extends AbstractController
     {
         return $this->render('artiste/index.html.twig', [
             'artistes' => $artisteRepository->findAll(),
+            'crudcurrent' => 'artiste',
+            'current' => 'crud'
         ]);
     }
 

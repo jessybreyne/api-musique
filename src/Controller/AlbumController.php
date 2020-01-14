@@ -24,6 +24,8 @@ class AlbumController extends AbstractController
     {
         return $this->render('album/index.html.twig', [
             'albums' => $albumRepository->findAll(),
+            'crudcurrent' => 'album',
+            'current' => 'crud'
         ]);
     }
 
