@@ -15,6 +15,26 @@
                 <th>Nom</th>
                 <td>{{ album.nom }}</td>
             </tr>
+            <tr>
+                <th>Musiques</th>
+                <td>
+                    <ul>
+                    {% for musique in album.musiques %}
+                        <li>{{ musique }}</li>
+                    {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>Artistes</th>
+                <td>
+                    <ul>
+                    {% for artiste in album.artistes %}
+                        <li>{{ artiste }}</li>
+                    {% endfor %}
+                    </ul>
+                </td>
+            </tr>
         </tbody>
     </table>
 
