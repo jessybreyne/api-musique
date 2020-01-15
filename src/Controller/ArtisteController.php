@@ -31,6 +31,7 @@ class ArtisteController extends AbstractController
 
     /**
      * @Route("/new", name="artiste_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_USER")
      */
     public function new(Request $request): Response
     {
@@ -68,6 +69,7 @@ class ArtisteController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="artiste_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_USER")
      */
     public function edit(Request $request, Artiste $artiste): Response
     {
@@ -90,6 +92,7 @@ class ArtisteController extends AbstractController
 
     /**
      * @Route("/{id}", name="artiste_delete", methods={"DELETE"})
+     * @IsGranted("ROLE_USER")
      */
     public function delete(Request $request, Artiste $artiste): Response
     {

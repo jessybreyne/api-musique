@@ -56,6 +56,7 @@ class CategorieController extends AbstractController
 
     /**
      * @Route("/{id}", name="categorie_show", methods={"GET"})
+     * @IsGranted("ROLE_USER")
      */
     public function show(Categorie $categorie): Response
     {
@@ -68,6 +69,7 @@ class CategorieController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="categorie_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_USER")
      */
     public function edit(Request $request, Categorie $categorie): Response
     {
@@ -90,6 +92,7 @@ class CategorieController extends AbstractController
 
     /**
      * @Route("/{id}", name="categorie_delete", methods={"DELETE"})
+     * @IsGranted("ROLE_USER")
      */
     public function delete(Request $request, Categorie $categorie): Response
     {

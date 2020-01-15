@@ -31,6 +31,7 @@ class AlbumController extends AbstractController
 
     /**
      * @Route("/new", name="album_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_USER")
      */
     public function new(Request $request): Response
     {
@@ -68,6 +69,7 @@ class AlbumController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="album_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_USER")
      */
     public function edit(Request $request, Album $album): Response
     {
@@ -90,6 +92,7 @@ class AlbumController extends AbstractController
 
     /**
      * @Route("/{id}", name="album_delete", methods={"DELETE"})
+     * @IsGranted("ROLE_USER")
      */
     public function delete(Request $request, Album $album): Response
     {
