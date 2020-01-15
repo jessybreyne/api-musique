@@ -3,47 +3,54 @@
 {% block title %}Album{% endblock %}
 
 {% block body %}
-    <h1>Album</h1>
+    <div class="p-5">
+        <h1>Album</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ album.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ album.nom }}</td>
-            </tr>
-            <tr>
-                <th>Musiques</th>
-                <td>
-                    <ul>
-                    {% for musique in album.musiques %}
-                        <li>{{ musique }}</li>
-                    {% endfor %}
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <th>Artistes</th>
-                <td>
-                    <ul>
-                    {% for artiste in album.artistes %}
-                        <li>{{ artiste }}</li>
-                    {% endfor %}
-                    </ul>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ album.id }}</td>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ album.nom }}</td>
+                </tr>
+                <tr>
+                    <th>Image</th>
+                    <td><img height="150" src="{{ album.image }}" alt='{{ album.nom }}'></td>
+                </tr>
+                <tr>
+                    <th>Musiques</th>
+                    <td>
+                        <ul>
+                        {% for musique in album.musiques %}
+                            <li><a href="{{ path('musique_show', {'id': musique.id}) }}">{{ musique.titre }}</a></li>
+                        {% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Artistes</th>
+                    <td>
+                        <ul>
+                        {% for artiste in album.artistes %}
+                            <li><a href="{{ path('artiste_show', {'id': artiste.id}) }}">{{ artiste.nom }}</a></li>
+                        {% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
 
-    <a class="btn btn-info" href="{{ path('album_index') }}">Retour à la liste</a>
-    {% if app.user %}
-    <a class="btn btn-info" href="{{ path('album_edit', {'id': album.id}) }}">Modifier</a>
+        <a class="btn btn-info" href="{{ path('album_index') }}">Retour à la liste</a>
+        {% if app.user %}
+        <a class="btn btn-info mt-2 mb-2" href="{{ path('album_edit', {'id': album.id}) }}">Modifier</a>
 
-    {{ include('album/_delete_form.html.twig') }}
-    {% endif %}
+        {{ include('album/_delete_form.html.twig') }}
+        {% endif %}
+
+    </div>
 
 {% endblock %}

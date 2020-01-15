@@ -12,6 +12,8 @@
                 <tr>
                     <th>Id</th>
                     <th>Titre</th>
+                    <th>Artistes</th>
+                    <th>Album</th>
                     <th>Date</th>
                     <th>Link</th>
                     <th>actions</th>
@@ -21,6 +23,8 @@
             {% for musique in musiques %}
                 <tr>
                     <td>{{ musique.id }}</td>
+                    <td>{{ musique.titre }}</td>
+                    <td>{{ musique.artistes|join(', ') }}</td>
                     <td>{{ musique.titre }}</td>
                     <td>{{ musique.date ? musique.date|date('Y-m-d H:i:s') : '' }}</td>
                     <td>{{ musique.link }}</td>

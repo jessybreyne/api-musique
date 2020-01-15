@@ -3,44 +3,49 @@
 {% block title %}Musique{% endblock %}
 
 {% block body %}
-    <h1>Musique</h1>
+    <div class="p-5">
+        <h1>{{ musique.artistes|join(', ') }} - {{ musique.titre }}</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ musique.id }}</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td>{{ musique.titre }}</td>
-            </tr>
-            <tr>
-                <th>Date</th>
-                <td>{{ musique.date ? musique.date|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Link</th>
-                <td>{{ musique.link }}</td>
-            </tr>
-            <tr>
-                <th>Album</th>
-                <td>{{ musique.album }}</td>
-            </tr>
-            <tr>
-                <th>Artistes</th>
-                {% for artiste in musique.artistes %}
-                <td>{{ artiste }}</td>
-                {% endfor %}
-            </tr>
-        </tbody>
-    </table>
-    <div style='display:none;'><iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url={{ musique.link }}&auto_play=true&hide_related=false&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></div>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ musique.id }}</td>
+                </tr>
+                <tr>
+                    <th>Titre</th>
+                    <td>{{ musique.titre }}</td>
+                </tr>
+                <tr>
+                <tr>
+                    <th>Artistes</th>
+                    <td>{{ musique.artistes|join(', ') }}</td>
+                </tr>
+                <tr>
+                    <th>Album</th>
+                    <td>{{ musique.album }}</td>
+                </tr>
+                <tr>
+                    <th>Date</th>
+                    <td>{{ musique.date ? musique.date|date('Y-m-d') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>Link</th>
+                    <td>{{ musique.link }}</td>
+                    <div><iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url={{ musique.link }}&auto_play=true&hide_related=false&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></div>
 
-    <a href="{{ path('musique_index') }}">back to list</a>
-    {% if app.user %}
-    <a href="{{ path('musique_edit', {'id': musique.id}) }}">edit</a>
-    {{ include('musique/_delete_form.html.twig') }}
-    {% endif %}
+                </tr>
+            </tbody>
+        </table>
+        {% if app.user %}
+            <a class="btn btn-info" href="{{ path('musique_index') }}">Retour à la liste</a>
+            <a class="btn btn-info mt-2 mb-2" href="{{ path('musique_edit', {'id': musique.id}) }}">Modifier</a>
+            {{ include('musique/_delete_form.html.twig') }}
+        {% else %}
+            <a class="btn btn-info" href="{{ path('index') }}">Retour à l'accueil'</a>
+        {% endif %}
+    </div>
+
+
 
 {% endblock %}
