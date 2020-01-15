@@ -49,6 +49,8 @@ class CategorieController extends AbstractController
         return $this->render('categorie/new.html.twig', [
             'categorie' => $categorie,
             'form' => $form->createView(),
+            'crudcurrent' => 'categorie',
+            'current' => 'crud'
         ]);
     }
 
@@ -59,6 +61,8 @@ class CategorieController extends AbstractController
     {
         return $this->render('categorie/show.html.twig', [
             'categorie' => $categorie,
+            'crudcurrent' => 'categorie',
+            'current' => 'crud'
         ]);
     }
 
@@ -79,6 +83,8 @@ class CategorieController extends AbstractController
         return $this->render('categorie/edit.html.twig', [
             'categorie' => $categorie,
             'form' => $form->createView(),
+            'crudcurrent' => 'categorie',
+            'current' => 'crud'
         ]);
     }
 

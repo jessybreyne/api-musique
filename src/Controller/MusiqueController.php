@@ -49,6 +49,8 @@ class MusiqueController extends AbstractController
         return $this->render('musique/new.html.twig', [
             'musique' => $musique,
             'form' => $form->createView(),
+            'crudcurrent' => 'musique',
+            'current' => 'crud'
         ]);
     }
 
@@ -59,6 +61,8 @@ class MusiqueController extends AbstractController
     {
         return $this->render('musique/show.html.twig', [
             'musique' => $musique,
+            'crudcurrent' => 'musique',
+            'current' => 'crud'
         ]);
     }
 
@@ -79,6 +83,8 @@ class MusiqueController extends AbstractController
         return $this->render('musique/edit.html.twig', [
             'musique' => $musique,
             'form' => $form->createView(),
+            'crudcurrent' => 'musique',
+            'current' => 'crud'
         ]);
     }
 

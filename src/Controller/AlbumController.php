@@ -49,6 +49,8 @@ class AlbumController extends AbstractController
         return $this->render('album/new.html.twig', [
             'album' => $album,
             'form' => $form->createView(),
+            'crudcurrent' => 'album',
+            'current' => 'crud'
         ]);
     }
 
@@ -59,6 +61,8 @@ class AlbumController extends AbstractController
     {
         return $this->render('album/show.html.twig', [
             'album' => $album,
+            'crudcurrent' => 'album',
+            'current' => 'crud'
         ]);
     }
 
@@ -79,6 +83,8 @@ class AlbumController extends AbstractController
         return $this->render('album/edit.html.twig', [
             'album' => $album,
             'form' => $form->createView(),
+            'crudcurrent' => 'album',
+            'current' => 'crud'
         ]);
     }
 

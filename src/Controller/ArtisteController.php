@@ -49,6 +49,8 @@ class ArtisteController extends AbstractController
         return $this->render('artiste/new.html.twig', [
             'artiste' => $artiste,
             'form' => $form->createView(),
+            'crudcurrent' => 'artiste',
+            'current' => 'crud'
         ]);
     }
 
@@ -59,6 +61,8 @@ class ArtisteController extends AbstractController
     {
         return $this->render('artiste/show.html.twig', [
             'artiste' => $artiste,
+            'crudcurrent' => 'artiste',
+            'current' => 'crud'
         ]);
     }
 
@@ -79,6 +83,8 @@ class ArtisteController extends AbstractController
         return $this->render('artiste/edit.html.twig', [
             'artiste' => $artiste,
             'form' => $form->createView(),
+            'crudcurrent' => 'artiste',
+            'current' => 'crud'
         ]);
     }
 
