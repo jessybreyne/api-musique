@@ -1,16 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'web/crud.html.twig' %}
 
 {% block title %}Album index{% endblock %}
-
 {% block body %}
-    <div class="row justify-content-center">
-        <div class="btn-group mt-3 col-3" role="group" aria-label="Basic example">
-            <a href="{{ path('musique_index') }}" class="btn btn-secondary">Musique</a>
-            <a href="{{ path('artiste_index') }}" class="btn btn-secondary">Artiste</a>
-            <a href="{{ path('categorie_index') }}" class="btn btn-secondary">Catégorie</a>
-            <a href="{{ path('album_index') }}" class="btn btn-secondary active">Album</a>
-        </div>
-    </div>
+{{ parent() }}
     <div class="ml-4 mr-4">
         <h1>Album index</h1>
         <table class="table">

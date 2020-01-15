@@ -28,6 +28,8 @@ class WebController extends AbstractController
      */
     public function page_crud()
     {
-        return $this->render('web/crud.html.twig', ['current' => 'crud']);
+        return $this->render('web/crud.html.twig', [
+            'current' => 'crud',
+            'crudcurrent'=>'']);
     }
 }
