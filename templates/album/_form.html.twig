@@ -7,6 +7,12 @@
     </div>
     <div class="row">
         <div class="form-group col-xs-1 col-lg-10">
+              {{ form_label(form.image, 'Image') }}
+              {{ form_widget(form.image, {'attr': {'class' : 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-xs-1 col-lg-10">
               {{ form_label(form.artistes, 'Artistes') }}
               {{ form_widget(form.artistes, {'attr': {'class' : 'form-control'}}) }}
         </div>

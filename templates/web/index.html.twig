@@ -5,43 +5,75 @@ MusiqueDB-SGB
 {% block body %}
     {{ parent() }}
     <main>
+        <style>
+        .scrolling-wrapper {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            width:100%;
+        }
+        .card {
+            flex: 0 0 auto;
+            margin: 0 10px;
+        }
+        </style>
         <div class='container'>
-            <div class='row'>
+            <div class='row mt-3'>
                 <h2> Musiques </h2>
             </div>
-            <div class='row'> 
+            <div class='row mt-3'>
+                <div class="scrolling-wrapper">
+
                 {% for musique in musiques %}
-                    <div class='card col-lg-4 col-sm-12 col-md-6'>
-                        <h3>{{ musique.titre }}</h3>
-                        <legend>{{ musique.date ? musique.date|date('Y-m-d') : '' }}</legend>
-                        <legend>{{ musique.link }}</legend>
-                        <a class="btn btn-info" href="{{ path('musique_show', {'id': musique.id}) }}">Afficher</a>
+                    <div class='card col-lg-4 col-md-8'>
+                        <div class="card-header">
+                            <h3>{{ musique.titre }}</h3>
+                            <legend>{{ musique.artistes|join(', ') }}</legend>
+                            <legend>{{ musique.date ? musique.date|date('d/m/Y') : '' }}</legend>
+                        </div>
+                        <div class="card-body">
+                            <a class="btn btn-info w-100" href="{{ musique.link }}" target="_blank" rel="noopener noreferrer" >Écouter sur soundcloud</a>
+                            <a class="btn btn-info w-100 mt-3" href="{{ path('musique_show', {'id': musique.id}) }}">Afficher</a>
+                        </div>
                     </div>
                 {% endfor %}
+                </div>
             </div>
-            <div class='row'>
-                <h2> Artiste </h2>
+            <div class='row mt-3'>
+                <h2> Artistes </h2>
             </div>
-            <div class='row'> 
-                {% for artiste in artistes %}
-                    <div class='card col-lg-4 col-sm-12 col-md-6'>
-                        <h3>{{ artiste.nom }}</h3>
-                        <img src='{{ artiste.photo }}' alt='{{ artiste.nom }}'>
-                        <a class="btn btn-info" href="{{ path('artiste_show', {'id': artiste.id}) }}">Afficher</a>
-                    </div>
-                {% endfor %}
+            <div class='row mt-3'>
+                <div class="scrolling-wrapper">
+                    {% for artiste in artistes %}
+                        <div class='card col-lg-4 col-md-8'>
+                            <img class="card-img-top rounded-circle" src='{{ artiste.photo }}' alt='{{ artiste.nom }}'>
+                            <div class="card-header">
+                                <h3>{{ artiste.nom }}</h3>
+                            </div>
+                            <div class="card-body">
+                                <a class="btn btn-info w-100" href="{{ path('artiste_show', {'id': artiste.id}) }}">Afficher</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
-            <div class='row'>
+            <div class='row mt-3'>
                 <h2> Albums </h2>
             </div>
-            <div class='row'> 
-                {% for album in albums %}
-                    <div class='card col-lg-4 col-sm-12 col-md-6'>
-                        <h3>{{ album.nom }}</h3>
-                        <img src='{{ album.image }}' alt='{{ album.nom }}'>
-                        <a class="btn btn-info" href="{{ path('album_show', {'id': album.id}) }}">Afficher</a>
-                    </div>
-                {% endfor %}
+            <div class='row mt-3 mb-5'>
+                <div class="scrolling-wrapper">
+                    {% for album in albums %}
+                        <div class='card col-lg-4 col-md-8'>
+                            <img class="card-img-top rounded-circle" src='{{ album.image }}' alt='{{ album.nom }}'>
+                            <div class="card-header">
+                                <h3>{{ album.nom }}</h3>
+                            </div>
+                            <div class="card-body">
+                                <a class="btn btn-info w-100" href="{{ path('album_show', {'id': album.id}) }}">Afficher</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </main>

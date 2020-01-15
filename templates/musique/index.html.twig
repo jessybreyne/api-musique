@@ -3,46 +3,48 @@
 {% block title %}Musique index{% endblock %}
 
 {% block body %}
-<div class="row justify-content-center">
-            <div class="btn-group mt-3 col-3" role="group" aria-label="Basic example">
-                <a href="{{ path('musique_index') }}" class="btn btn-secondary">Musique</a>
-                <a href="{{ path('artiste_index') }}" class="btn btn-secondary">Artiste</a>
-                <a href="{{ path('categorie_index') }}" class="btn btn-secondary">Catégorie</a>
-                <a href="{{ path('album_index') }}" class="btn btn-secondary">Album</a>
-            </div>
+    <div class="row justify-content-center">
+        <div class="btn-group mt-3 col-3" role="group" aria-label="Basic example">
+            <a href="{{ path('musique_index') }}" class="btn btn-secondary">Musique</a>
+            <a href="{{ path('artiste_index') }}" class="btn btn-secondary">Artiste</a>
+            <a href="{{ path('categorie_index') }}" class="btn btn-secondary">Catégorie</a>
+            <a href="{{ path('album_index') }}" class="btn btn-secondary">Album</a>
         </div>
+    </div>
+    <div class="ml-4 mr-4">
+        <h1>Musique index</h1>
 
-    <h1>Musique index</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Titre</th>
+                    <th>Date</th>
+                    <th>Link</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for musique in musiques %}
+                <tr>
+                    <td>{{ musique.id }}</td>
+                    <td>{{ musique.titre }}</td>
+                    <td>{{ musique.date ? musique.date|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ musique.link }}</td>
+                    <td>
+                        <a class="btn btn-info" href="{{ path('musique_show', {'id': musique.id}) }}">Afficher</a>
+                        <a class="btn btn-info" href="{{ path('musique_edit', {'id': musique.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                <th>Date</th>
-                <th>Link</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for musique in musiques %}
-            <tr>
-                <td>{{ musique.id }}</td>
-                <td>{{ musique.titre }}</td>
-                <td>{{ musique.date ? musique.date|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ musique.link }}</td>
-                <td>
-                    <a class="btn btn-info" href="{{ path('musique_show', {'id': musique.id}) }}">Afficher</a>
-                    <a class="btn btn-info" href="{{ path('musique_edit', {'id': musique.id}) }}">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <a class="btn btn-primary" href="{{ path('musique_new') }}">Ajouter</a>
 
-    <a class="btn btn-primary" href="{{ path('musique_new') }}">Ajouter</a>
+    </div>
 {% endblock %}

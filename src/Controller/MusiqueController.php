@@ -24,6 +24,8 @@ class MusiqueController extends AbstractController
     {
         return $this->render('musique/index.html.twig', [
             'musiques' => $musiqueRepository->findAll(),
+            'crudcurrent' => 'musique',
+            'current' => 'crud'
         ]);
     }
 

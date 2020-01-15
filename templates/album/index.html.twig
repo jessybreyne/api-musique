@@ -4,41 +4,45 @@
 
 {% block body %}
     <div class="row justify-content-center">
-            <div class="btn-group mt-3 col-3" role="group" aria-label="Basic example">
-                <a href="{{ path('musique_index') }}" class="btn btn-secondary">Musique</a>
-                <a href="{{ path('artiste_index') }}" class="btn btn-secondary">Artiste</a>
-                <a href="{{ path('categorie_index') }}" class="btn btn-secondary">Catégorie</a>
-                <a href="{{ path('album_index') }}" class="btn btn-secondary">Album</a>
-            </div>
+        <div class="btn-group mt-3 col-3" role="group" aria-label="Basic example">
+            <a href="{{ path('musique_index') }}" class="btn btn-secondary">Musique</a>
+            <a href="{{ path('artiste_index') }}" class="btn btn-secondary">Artiste</a>
+            <a href="{{ path('categorie_index') }}" class="btn btn-secondary">Catégorie</a>
+            <a href="{{ path('album_index') }}" class="btn btn-secondary">Album</a>
         </div>
+    </div>
+    <div class="ml-4 mr-4">
+        <h1>Album index</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Image</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for album in albums %}
+                <tr>
+                    <td>{{ album.id }}</td>
+                    <td>{{ album.nom }}</td>
+                    <td>{{ album.image }}</td>
+                    <td>
+                        <a class="btn btn-info" href="{{ path('album_show', {'id': album.id}) }}">Afficher</a>
+                        <a class="btn btn-info" href="{{ path('album_edit', {'id': album.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <h1>Album index</h1>
+        <a class="btn btn-primary" href="{{ path('album_new') }}">Ajouter</a>
+    </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for album in albums %}
-            <tr>
-                <td>{{ album.id }}</td>
-                <td>{{ album.nom }}</td>
-                <td>
-                    <a class="btn btn-info" href="{{ path('album_show', {'id': album.id}) }}">Afficher</a>
-                    <a class="btn btn-info" href="{{ path('album_edit', {'id': album.id}) }}">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-    <a class="btn btn-primary" href="{{ path('album_new') }}">Ajouter</a>
 {% endblock %}
