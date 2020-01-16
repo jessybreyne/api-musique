@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -25,21 +26,25 @@ class Artiste
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("musique")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups("musique")
      */
     private $photo;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Musique", inversedBy="artistes")
+     * @ORM\JoinColumn(referencedColumnName="id", unique=true)
      */
     private $musiques;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Album", mappedBy="artistes")
+     * @ORM\JoinColumn(referencedColumnName="id", unique=true)
      */
     private $albums;
 

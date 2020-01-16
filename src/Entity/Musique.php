@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -10,7 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ApiResource(
  *     collectionOperations={"get"={"method"="GET"}},
- *     itemOperations={"get"={"method"="GET"}}
+ *     itemOperations={"get"={"method"="GET"}},
+ *     normalizationContext={"groups"={"musique"}}
  * )
  * @ORM\Entity(repositoryClass="App\Repository\MusiqueRepository")
  */
@@ -20,41 +22,49 @@ class Musique
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("musique")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("musique")
      */
     private $titre;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups("musique")
      */
     private $date;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Artiste", mappedBy="musiques")
+     * @Groups("musique")
      */
     private $artistes;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Categorie", mappedBy="musiques")
+     * @Groups("musique")
      */
     private $categories;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("musique")
      */
     private $link;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Playlist", mappedBy="musiques")
+     * @Groups("musique")
      */
     private $playlists;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Album", inversedBy="musiques")
+     * @Groups("musique")
      */
     private $album;
 

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ApiResource(
  *     collectionOperations={"get"={"method"="GET"}},
- *     itemOperations={"get"={"method"="GET"}}
+ *     itemOperations={"get"={"method"="GET"}},
  * )
  * @ORM\Entity(repositoryClass="App\Repository\AlbumRepository")
  */
@@ -25,6 +26,7 @@ class Album
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("musique")
      */
     private $nom;
 
@@ -35,11 +37,14 @@ class Album
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("musique")
      */
     private $image;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Musique", mappedBy="album")
+     * @ORM\JoinColumn(referencedColumnName="id", unique=true)
+     * 
      */
     private $musiques;
 
