@@ -20,7 +20,7 @@
             <tr>
                 <td>{{ artiste.id }}</td>
                 <td>{{ artiste.nom }}</td>
-                <td>{{ artiste.photo }}</td>
+                <td><img class="rounded-circle" height="150" src="{{ artiste.photo }}" title="{{ artiste.nom }}" alt='{{ artiste.nom }}'></td>
                 <td>
                 <a class="btn btn-info" href="{{ path('artiste_show', {'id': artiste.id}) }}">Afficher</a>
                 <a class="btn btn-info" href="{{ path('artiste_edit', {'id': artiste.id}) }}">Modifier</a>

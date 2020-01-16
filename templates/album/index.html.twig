@@ -19,7 +19,7 @@
                 <tr>
                     <td>{{ album.id }}</td>
                     <td>{{ album.nom }}</td>
-                    <td>{{ album.image }}</td>
+                    <td><img height="150" src="{{ album.image }}" alt='{{ album.nom }}' title="{{ album.nom }}"></td>
                     <td>
                         <a class="btn btn-info" href="{{ path('album_show', {'id': album.id}) }}">Afficher</a>
                         <a class="btn btn-info" href="{{ path('album_edit', {'id': album.id}) }}">Modifier</a>

@@ -1,29 +1,36 @@
 {% extends "base.html.twig" %}
 {% block body %}
 {{ parent() }}
-{% if app.user.apikey %}    
-    Votre API KEY : {{ app.user.apikey }}
+<div class="text-center mt-5" >
+{% if app.user.apikey %}
+    <p class="font-weight-bold">Votre API KEY : </p>
+    <code class="bg-dark p-2">{{ app.user.apikey }}</code>
 {% else %}
-    <button onclick="getAPI()">GET API</button>
-    <div id="result"></div>
-{% endif %}
 
+    <button class="btn btn-lg btn-primary" onclick="getAPI()">GÉNÉRER UNE CLÉ D'API</button>
+
+    <div id="result" style="display:none; margin-top: 1em;">
+        <p class="font-weight-bold">Votre API KEY : </p>
+        <code class="bg-dark p-2"></code>
+    </div>
+{% endif %}
+</div>
 {% endblock %}
 {% block javascripts %}
     <script type="text/javascript">
         function getAPI(){
             fetch("{{ path('getAPIKey') }}").then(function(response){
-                    return response.json()
+                    return response.json();
                  })
                 .then(function(data){
-                    console.log(data)
-                    let div = document.createElement("div",{class : "alert alert-success"})
-                    div.innerText = "Votre clé d'API est : "+ data.APIKey;
+                    console.log(data);
+                    let div = document.querySelector("code");
+                    div.innerText = data.APIKey;
                     document.getElementById("result").append(div);
-                    document.querySelector('button').remove()
-                })
+                    document.getElementById("result").style.display = "block";
+                    document.querySelector('button').remove();
+                });
         }
-        
+
     </script>
 {% endblock %}
-
