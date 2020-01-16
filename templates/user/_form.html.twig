@@ -1,4 +1,33 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    <div class="row">
+        <div class="form-group col-xs-1 col-lg-10">
+            {{ form_label(form.username, "Nom d'utilisateur") }}
+            {{ form_widget(form.username, {'attr': {'class' : 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-xs-1 col-lg-10">
+            {{ form_label(form.password, "Mode de passe") }}
+            {{ form_widget(form.password, {'attr': {'class' : 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-xs-1 col-lg-10">
+            {{ form_label(form.roles, "Rôles") }}
+            {{ form_widget(form.roles, {'attr': {'class' : 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-xs-1 col-lg-10">
+            {{ form_label(form.APIKey, "Clé d'API") }}
+            {{ form_widget(form.APIKey, {'attr': {'class' : 'form-control'}}) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-xs-1 col-lg-10">
+            {{ form_label(form.playlists, "Playlists") }}
+            {{ form_widget(form.playlists, {'attr': {'class' : 'form-control'}}) }}
+        </div>
+    </div>
     <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}
